@@ -14,8 +14,8 @@ ENV GOSU_VERSION="1.11" \
 
 RUN buildDeps='curl gnupg' HOME='/root' \
     && set -x \
-    && echo 'https://mirrors.ustc.edu.cn/alpine/v3.9/main'>/etc/apk/repositories \
-    && echo 'https://mirrors.ustc.edu.cn/alpine/v3.9/community'>>/etc/apk/repositories \
+    && echo 'https://mirrors.ustc.edu.cn/alpine/v3.10/main'>/etc/apk/repositories \
+    && echo 'https://mirrors.ustc.edu.cn/alpine/v3.10/community'>>/etc/apk/repositories \
     && apk update \
 
     && apk --no-cache add --update $buildDeps \
