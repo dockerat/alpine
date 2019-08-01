@@ -7,9 +7,9 @@ LABEL Description="Alpine镜像。"
 ENV LANG="zh_CN.UTF-8"
 ENV TIMEZONE=/Asia/Chongqing
 
-ENV GOSU_VERSION="1.7" \
-    GOSU_DOWNLOAD_URL="https://github.com/tianon/gosu/releases/download/1.7/gosu-amd64" \
-    GOSU_DOWNLOAD_SIG="https://github.com/tianon/gosu/releases/download/1.7/gosu-amd64.asc" \
+ENV GOSU_VERSION="1.11" \
+    GOSU_DOWNLOAD_URL="https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-amd64" \
+    GOSU_DOWNLOAD_SIG="https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-amd64.asc" \
     GOSU_DOWNLOAD_KEY="0x036A9C25BF357DD4"
 
 RUN buildDeps='curl gnupg' HOME='/root'
