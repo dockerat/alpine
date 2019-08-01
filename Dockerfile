@@ -10,7 +10,7 @@ ENV TIMEZONE=/Asia/Chongqing
 ENV GOSU_VERSION="1.11" \
     GOSU_DOWNLOAD_URL="https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-amd64" \
     GOSU_DOWNLOAD_SIG="https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-amd64.asc" \
-    GOSU_DOWNLOAD_KEY="0x036A9C25BF357DD4"
+    GOSU_DOWNLOAD_KEY="B42F6819007F00F88E364FD4036A9C25BF357DD4"
 
 RUN buildDeps='curl gnupg' HOME='/root' \
     && set -x \
