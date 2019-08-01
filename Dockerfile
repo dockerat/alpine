@@ -12,7 +12,7 @@ ENV GOSU_VERSION="1.11" \
     GOSU_DOWNLOAD_SIG="https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-amd64.asc" \
     GOSU_DOWNLOAD_KEY="0x036A9C25BF357DD4"
 
-RUN buildDeps='curl gnupg' HOME='/root'
+RUN buildDeps='curl gnupg' HOME='/root' \
     && set -x \
     && echo 'https://mirrors.ustc.edu.cn/alpine/v3.9/main'>/etc/apk/repositories \
     && echo 'https://mirrors.ustc.edu.cn/alpine/v3.9/community'>>/etc/apk/repositories \
