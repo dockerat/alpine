@@ -12,7 +12,7 @@ RUN set -ex \
     && echo 'https://mirrors.ustc.edu.cn/alpine/v3.10/main'>>/etc/apk/repositories \
     && echo 'https://mirrors.ustc.edu.cn/alpine/v3.10/community'>>/etc/apk/repositories \
     && apk update \
-    && apk --no-cache add tzdata \
+    && apk --no-cache add tzdata su-exec \
     && cp "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime \
     && echo "${TIMEZONE}" > /etc/timezone \
     && echo "export LC_ALL=${LANG}" >> /etc/profile \
