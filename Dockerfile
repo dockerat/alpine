@@ -9,8 +9,7 @@ ENV TIMEZONE=/Asia/Chongqing
 
 RUN set -ex \
     \
-    && echo 'https://mirrors.ustc.edu.cn/alpine/v3.10/main'>/etc/apk/repositories \
-    && echo 'https://mirrors.ustc.edu.cn/alpine/v3.10/community'>>/etc/apk/repositories \
+    && sed -i "s/dl-cdn\.alpinelinux\.org/mirrors.ustc.edu.cn/" /etc/apk/repositories \
     && apk update \
     && apk --no-cache add tzdata su-exec \
     && cp "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime \
