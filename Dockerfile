@@ -7,9 +7,9 @@ LABEL Description="Alpine镜像。"
 ENV LANG="zh_CN.UTF-8"
 ENV TIMEZONE=/Asia/Chongqing
 
-RUN buildDeps='curl gnupg' HOME='/root' \
-    && set -x \
-    && echo 'https://mirrors.ustc.edu.cn/alpine/v3.10/main'>/etc/apk/repositories \
+RUN set -ex \
+    \
+    && echo 'https://mirrors.ustc.edu.cn/alpine/v3.10/main'>>/etc/apk/repositories \
     && echo 'https://mirrors.ustc.edu.cn/alpine/v3.10/community'>>/etc/apk/repositories \
     && apk update \
     && apk --no-cache add tzdata \
