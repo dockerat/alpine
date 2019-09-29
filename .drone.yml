@@ -12,6 +12,10 @@ steps:
 
   - name: docker
     image: plugins/docker
+    when:
+      event:
+        - tag
+        - pull_request
     settings:
       repo: storezhang/alpine
       dockerfile: ./Dockerfile
