@@ -7,19 +7,11 @@ clone:
 steps:
   - name: clone
     image: plugins/git
-    when:
-      event:
-        - tag
-        - pull_request
     recursive: true
 
 
   - name: docker
     image: plugins/docker
-    when:
-      event:
-        - tag
-        - pull_request
     settings:
       repo: storezhang/alpine
       dockerfile: ./Dockerfile
