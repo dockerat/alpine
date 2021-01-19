@@ -1,7 +1,7 @@
-FROM alpine:3.11.2
+FROM alpine:3.13
 
-LABEL maintainer="Alpine docker maintainers <storezhang@gmail.com>"
-LABEL architecture="AMD64/x86_64" version="latest" build="2019-09-29"
+LABEL maintainer="Alpine的Docker镜像 <storezhang@gmail.com>"
+LABEL architecture="AMD64/x86_64" version="3.13" build="2021-01-19"
 LABEL Description="Alpine镜像。"
 
 ENV LANG="zh_CN.UTF-8"
