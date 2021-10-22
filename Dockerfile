@@ -9,6 +9,9 @@ LABEL Description="Alpine镜像，增加时间配置以及守护进程"
 ENV LANG="zh_CN.UTF-8"
 ENV TIMEZONE=/Asia/Chongqing
 
+# 延迟启动
+ENV DELAY 1s
+
 
 RUN set -ex \
     \
