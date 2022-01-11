@@ -3,7 +3,7 @@ FROM alpine:3.15
 
 LABEL author="storezhang<华寅>"
 LABEL email="storezhang@gmail.com"
-LABEL architecture="AMD64/x86_64" version="3.14" build="2021-10-14"
+LABEL architecture="AMD64/x86_64" version="3.14" build="2022-01-11"
 LABEL description="Alpine镜像，增加时间配置以及守护进程"
 
 
