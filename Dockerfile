@@ -44,6 +44,7 @@ WORKDIR /config
 
 # 复制文件
 COPY --from=chinese /opt/chinese /opt/chinese
+COPY --from=chinese /etc/apk/keys/sgerrand.rsa.pub /etc/apk/keys/sgerrand.rsa.pub
 COPY docker /
 
 
@@ -68,6 +69,7 @@ RUN set -ex \
     && cat /usr/local/locale.md | xargs -i /usr/glibc-compat/bin/localedef -i {} -f UTF-8 {}.UTF-8 \
     && rm -rf /opt/chinese \
     && rm -rf /usr/local/locale.md \
+    && rm -f /etc/apk/keys/sgerrand.rsa.pub \
     \
     \
     \
