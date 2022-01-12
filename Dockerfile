@@ -43,10 +43,6 @@ VOLUME /config
 WORKDIR /config
 
 
-# 以创建的用户为运行用户（非Root用户，防止权限过大）
-USER ${USERNAME}
-
-
 # 复制文件
 COPY --from=chinese /opt/chinese /opt/chinese
 COPY --from=chinese /etc/apk/keys/sgerrand.rsa.pub /etc/apk/keys/sgerrand.rsa.pub
