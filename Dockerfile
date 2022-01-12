@@ -38,8 +38,13 @@ ENV GID 1000
 ENV DELAY 1s
 
 
+# 定义公共配置卷
 VOLUME /config
 WORKDIR /config
+
+
+# 以创建的用户为运行用户（非Root用户，防止权限过大）
+USER ${USERNAME}
 
 
 # 复制文件
