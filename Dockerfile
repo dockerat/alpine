@@ -68,7 +68,7 @@ RUN set -ex \
     # 增加中文支持以及64位程序库支持
     && apk add /opt/chinese/glibc-bin-2.30-r0.apk /opt/chinese/glibc-i18n-2.30-r0.apk /opt/chinese/glibc-2.30-r0.apk \
     && cat /usr/local/locale.md | xargs -i /usr/glibc-compat/bin/localedef -i {} -f UTF-8 {}.UTF-8 \
-    && apk del glibc-bin glibc \
+    && apk del glibc-bin glibc glibc-i18n \
     && rm -rf /opt/chinese \
     && rm -rf /usr/local/locale.md \
     && rm -f /etc/apk/keys/sgerrand.rsa.pub \
@@ -89,7 +89,7 @@ RUN set -ex \
     \
     \
     # 链接64位库，不然无法运行64位程序
-    && mkdir /lib64 \
+    # && mkdir /lib64 \
     && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2 \
     \
     \
