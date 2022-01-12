@@ -68,8 +68,7 @@ RUN set -ex \
     \
     \
     \
-    # 清理临时文件 \
-    && apk cache -v sync \
+    # 清理临时文件
     && rm -rf /var/cache/apk/*
 
 
