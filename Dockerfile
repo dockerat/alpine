@@ -1,3 +1,17 @@
+FROM storezhang/alpine AS chinese
+
+WORKDIR /opt/chinese
+
+RUN apk --no-cache add ca-certificates wget
+RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
+RUN wget https://ghproxy.com/https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.30-r0/glibc-2.30-r0.apk
+RUN wget https://ghproxy.com/https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.30-r0/glibc-bin-2.30-r0.apk
+RUN wget https://ghproxy.com/https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.30-r0/glibc-i18n-2.30-r0.apk
+
+
+
+
+
 FROM alpine:3.15
 
 
@@ -7,9 +21,12 @@ LABEL architecture="AMD64/x86_64" version="3.14" build="2022-01-11"
 LABEL description="Alpine镜像，增加时间配置以及守护进程"
 
 
-# 增加中文支持，不然命令行执行程序会报错
-ENV LANG zh_CN.UTF-8
+# 定义时区
 ENV TIMEZONE Asia/Chongqing
+
+# 增加中文支持，不然命令行执行程序会报错
+ENV LANG C.UTF-8
+ENV LANGUAGE C.UTF-8
 
 # 设置运行用户及组
 ENV UMASK 022
@@ -26,6 +43,7 @@ WORKDIR /config
 
 
 # 复制文件
+COPY --from=chinese /opt/chinese /opt/chinese
 COPY docker /
 
 
@@ -45,6 +63,14 @@ RUN set -ex \
     \
     \
     \
+    # 增加中文支持 \
+    && apk add /opt/chinese/glibc-bin-2.30-r0.apk /opt/chinese/glibc-i18n-2.30-r0.apk /opt/chinese/glibc-2.30-r0.apk \
+    && cat /usr/local/locale.md | xargs -i /usr/glibc-compat/bin/localedef -i {} -f UTF-8 {}.UTF-8 && \
+    && rm -rf /opt/chinese \
+    && rm -rf /usr/local/locale.md \
+    \
+    \
+    \
     # 增加执行权限
     && chmod +x /usr/bin/entrypoint \
     && chmod +x /usr/bin/property \
@@ -58,7 +84,7 @@ RUN set -ex \
     \
     \
     \
-    # 链接X64库，不然无法运行64位程序 \
+    # 链接64位库，不然无法运行64位程序 \
     && mkdir /lib64 \
     && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2 \
     \
