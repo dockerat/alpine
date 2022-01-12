@@ -65,7 +65,7 @@ RUN set -ex \
     \
     # 增加中文支持 \
     && apk add /opt/chinese/glibc-bin-2.30-r0.apk /opt/chinese/glibc-i18n-2.30-r0.apk /opt/chinese/glibc-2.30-r0.apk \
-    && cat /usr/local/locale.md | xargs -i /usr/glibc-compat/bin/localedef -i {} -f UTF-8 {}.UTF-8 && \
+    && cat /usr/local/locale.md | xargs -i /usr/glibc-compat/bin/localedef -i {} -f UTF-8 {}.UTF-8 \
     && rm -rf /opt/chinese \
     && rm -rf /usr/local/locale.md \
     \
