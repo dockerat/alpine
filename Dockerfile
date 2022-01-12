@@ -64,7 +64,7 @@ RUN set -ex \
     \
     \
     \
-    # 增加中文支持 \
+    # 增加中文支持以及64位程序库支持
     && apk add /opt/chinese/glibc-bin-2.30-r0.apk /opt/chinese/glibc-i18n-2.30-r0.apk /opt/chinese/glibc-2.30-r0.apk \
     && cat /usr/local/locale.md | xargs -i /usr/glibc-compat/bin/localedef -i {} -f UTF-8 {}.UTF-8 \
     && rm -rf /opt/chinese \
@@ -83,11 +83,6 @@ RUN set -ex \
     && cp "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime \
     && echo "${TIMEZONE}" > /etc/timezone \
     && echo "export LC_ALL=${LANG}" >> /etc/profile \
-    \
-    \
-    \
-    # 链接64位库，不然无法运行64位程序 \
-    && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2 \
     \
     \
     \
