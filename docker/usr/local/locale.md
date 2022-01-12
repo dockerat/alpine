@@ -1,4 +1,3 @@
 en_US
 zh_CN
 zh_HK
-zh_TW
