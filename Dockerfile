@@ -72,9 +72,5 @@ RUN set -ex \
     && rm -rf /var/cache/apk/*
 
 
-# 以创建的用户为运行用户（非Root用户，防止权限过大）
-USER ${USERNAME}
-
-
 ENTRYPOINT ["/usr/bin/entrypoint"]
 CMD ["/bin/s6-svscan", "/etc/s6"]
