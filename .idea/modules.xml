@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/docker-alpine.iml" filepath="$PROJECT_DIR$/.idea/docker-alpine.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../drone-plugin-mcu/.idea/drone-plugin-mcu.iml" filepath="$PROJECT_DIR$/../drone-plugin-mcu/.idea/drone-plugin-mcu.iml" />
-    </modules>
-  </component>
-</project>

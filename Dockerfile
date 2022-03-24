@@ -1,9 +1,10 @@
-FROM alpine:3.15
+FROM alpine
 
 
 LABEL author="storezhang<华寅>"
 LABEL email="storezhang@gmail.com"
-LABEL architecture="AMD64/x86_64" version="3.15" build="2022-01-11"
+LABEL qq="160290688"
+LABEL wechat="storezhang"
 LABEL description="Alpine镜像，增加时间配置以及守护进程"
 
 
