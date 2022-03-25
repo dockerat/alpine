@@ -26,8 +26,9 @@ ENV DELAY 1s
 
 
 # 定义公共配置卷
-VOLUME /config
-WORKDIR /config
+ENV USER_HOME /config
+VOLUME ${USER_HOME}
+WORKDIR ${USER_HOME}
 
 
 # 复制文件
@@ -40,7 +41,7 @@ RUN set -ex \
     \
     # 创建用户及用户组，后续所有操作都以该用户为执行者，修复在Docker中创建的文件不能被外界用户所操作
     && addgroup -g ${GID} -S ${USERNAME} \
-    && adduser -u ${UID} -g ${GID} -S ${USERNAME} \
+    && adduser -u ${UID} -g ${GID} -S ${USERNAME} -h ${USER_HOME} \
     \
     \
     \
