@@ -1,4 +1,4 @@
-FROM alpine:3.11.10
+FROM alpine:3.16.2
 
 
 LABEL author="storezhang<华寅>"
