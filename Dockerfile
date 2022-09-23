@@ -45,7 +45,7 @@ RUN set -ex \
     \
     \
     \
-    && sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories \
+    && sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
     && apk update \
     && apk --no-cache add tzdata su-exec bash s6 \
     \
