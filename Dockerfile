@@ -34,7 +34,7 @@ WORKDIR ${USER_HOME}
 # 复制文件
 COPY docker /
 
-RUN ping mirrors.ustc.edu.cn
+
 RUN set -ex \
     \
     \
