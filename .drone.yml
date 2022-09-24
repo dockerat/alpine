@@ -24,7 +24,7 @@ steps:
         from_secret: password_tencentyun_ccr
     settings:
       repository: storezhang/alpine
-      tag: 3.15.6
+      tag: 3.16.2
       registries:
         - username: storezhang
           password: $${PASSWORD_DOCKER}
