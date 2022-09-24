@@ -1,11 +1,11 @@
 FROM alpine:3.16.2
 
 
-LABEL author="storezhang<华寅>"
-LABEL email="storezhang@gmail.com"
-LABEL qq="160290688"
-LABEL wechat="storezhang"
-LABEL description="Alpine镜像，增加时间配置以及守护进程"
+LABEL author="storezhang<华寅>" \
+    email="storezhang@gmail.com" \
+    qq="160290688" \
+    wechat="storezhang" \
+    description="Alpine镜像，增加时间配置以及守护进程"
 
 
 # 定义时区
