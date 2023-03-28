@@ -1,3 +1,18 @@
+kind: secret
+name: token_docker
+get:
+  path: secrets
+  name: token_docker_dronestock
+---
+
+kind: secret
+name: password_ccr
+get:
+  path: secrets
+  name: password_ccr
+---
+
+
 kind: pipeline
 type: docker
 name: 发布
@@ -10,9 +25,11 @@ clone:
 steps:
   - name: 代码
     image: ccr.ccs.tencentyun.com/dronestock/git
+    pull: always
 
   - name: 发布
     image: ccr.ccs.tencentyun.com/dronestock/docker
+    pull: always
     privileged: true
     volumes:
       - name: docker
@@ -21,10 +38,10 @@ steps:
       PASSWORD_DOCKER:
         from_secret: token_docker
       PASSWORD_CCR:
-        from_secret: password_tencentyun_ccr
+        from_secret: password_ccr
     settings:
       repository: storezhang/alpine
-      tag: exp:file("Dockerfile")[12:18]
+      tag: file('Dockerfile')[12:18]
       registries:
         - username: storezhang
           password: $${PASSWORD_DOCKER}
