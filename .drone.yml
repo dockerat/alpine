@@ -40,7 +40,6 @@ steps:
       PASSWORD_CCR:
         from_secret: password_ccr
     settings:
-      verbose: true
       repository: storezhang/alpine
       tag: match(file('Dockerfile'), '.*(FROM alpine:(.*)\\s*).*')[2]
       registries:
