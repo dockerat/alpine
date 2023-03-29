@@ -41,7 +41,7 @@ steps:
         from_secret: password_ccr
     settings:
       repository: storezhang/alpine
-      tag: match(file('Dockerfile'), '.*(FROM alpine:(.*)\s*).*')[2]
+      tag: match(file('Dockerfile'), '.*(FROM alpine:(.*)\\\\s*).*')[2]
       registries:
         - username: storezhang
           password: $${PASSWORD_DOCKER}
