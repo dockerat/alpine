@@ -71,7 +71,7 @@ RUN set -ex \
     # 配置系统
     && chmod +x /tmp/setup/* \
     && ARCH=${ARCH} /tmp/setup/arch \
-    && rm -rf /var/setup \
+    && rm -rf /tmp/setup \
     \
     \
     \
