@@ -57,8 +57,8 @@ steps:
       repository: storezhang/alpine
       tag: match(file('Dockerfile'), '.*(FROM alpine:(.*)\\\\s*).*')[2]
       targets:
-        - arch: arm32v7
-        - arch: arm64v8
+        - arch: arm/v7
+        - arch: arm64
         - arch: amd64
       registries:
         - username: storezhang
