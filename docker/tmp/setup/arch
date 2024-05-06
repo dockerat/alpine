@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ "$ARCH" = "amd64" ]; then
+    mkdir /lib64
+    ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
+elif [ "$ARCH" = "arm64" ]; then
+    echo "暂时没找到办法";
+else
+    echo "不需要支持64位库";
+fi

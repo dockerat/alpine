@@ -1,6 +1,10 @@
 FROM alpine:3.19.1
 
 
+# 平台架构，根据不同的架构执行不同的逻辑
+ARG ARCH
+
+
 LABEL author="storezhang<华寅>" \
     email="storezhang@gmail.com" \
     qq="160290688" \
@@ -64,9 +68,10 @@ RUN set -ex \
     \
     \
     \
-    # 链接64位库，不然无法运行64位程序
-    && mkdir /lib64 \
-    && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2 \
+    # 配置系统
+    && chmod +x /tmp/setup/* \
+    && ARCH=${ARCH} /tmp/setup/arch \
+    && rm -rf /var/setup \
     \
     \
     \
