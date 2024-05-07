@@ -1,10 +1,6 @@
 FROM alpine:3.19.1
 
 
-# 平台架构，根据不同的架构执行不同的逻辑
-ARG ARCH
-
-
 LABEL author="storezhang<华寅>" \
     email="storezhang@gmail.com" \
     qq="160290688" \
@@ -39,6 +35,7 @@ WORKDIR ${USER_HOME}
 COPY docker /
 
 
+ARG TARGETARCH
 RUN set -ex \
     \
     \
@@ -70,8 +67,8 @@ RUN set -ex \
     \
     # 配置系统
     && chmod +x /tmp/setup/* \
-    && ARCH=${ARCH} /tmp/setup/arch \
-    && rm -rf /tmp/setup \
+    && ARCH=${TARGETARCH} /tmp/setup/arch \
+    && rm -rf /tmp \
     \
     \
     \
