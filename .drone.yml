@@ -49,7 +49,6 @@ steps:
       - name: docker
         path: /var/lib/docker
     environment:
-      TMPDIR: /tmp
       PASSWORD_DOCKER:
         from_secret: token_docker
       PASSWORD_CCR:
