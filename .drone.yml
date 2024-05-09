@@ -56,7 +56,7 @@ steps:
     settings:
       repository: storezhang/alpine
       tag: match(file('Dockerfile'), '.*(FROM alpine:(.*)\s*).*')[2] + '.$${DRONE_BUILD_NUMBER}'
-      platforms:
+      targets:
         - arch: arm
           variant: v7
         - arch: arm64
