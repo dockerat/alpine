@@ -54,7 +54,7 @@ steps:
         - arch: amd64
       registry:
         hostname: ccr.ccs.tencentyun.com
-        username: 160290688
+        username: "160290688"
         password: $${PASSWORD_CCR}
 
   - name: 通知
