@@ -46,7 +46,7 @@ steps:
         from_secret: password_ccr
     settings:
       repository: dockerat/alpine
-      tag: match(file('Dockerfile'), '.*(FROM alpine:(.*)\s*).*')[2] + '.$${DRONE_BUILD_NUMBER}'
+      tag: match(file('Dockerfile'), '.*(FROM .*alpine:(.*)\s*).*')[2] + '.$${DRONE_BUILD_NUMBER}'
       platforms:
         - arch: arm
           variant: v7
