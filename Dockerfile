@@ -1,4 +1,4 @@
-FROM hub.uuuadc.top/library/alpine:3.20.0
+FROM hub.uuuadc.top/library/alpine:3.20.1
 
 
 LABEL author="storezhang<华寅>" \
