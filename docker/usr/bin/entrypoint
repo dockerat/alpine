@@ -4,31 +4,31 @@
 umask "${UMASK}"
 
 # 设置用户名
-if [ "${USERNAME}" != "storezhang" ]; then
+if [ "${USER}" != "storezhang" ]; then
   sed -i -e "s/^storezhang\:/${USERNAME}\:/g" /etc/passwd
 fi
 
 if [ -z "${GID}" ]; then
   # shellcheck disable=SC2006
-  GID="$(id -g "${USERNAME}")"
+  GID="$(id -g "${USER}")"
 fi
 
 if [ -z "${UID}" ]; then
   # shellcheck disable=SC2006
-  UID="$(id -u "${USERNAME}")"
+  UID="$(id -u "${USER}")"
 fi
 
 # 设置GID
 # shellcheck disable=SC2006
-if [ -n "${GID}" ] && [ "${GID}" != "$(id -g "${USERNAME}")" ]; then
-  sed -i -e "s/^${USERNAME}:\([^:]*\):[0-9]*/${USERNAME}:\1:${GID}/" /etc/group
-  sed -i -e "s/^${USERNAME}:\([^:]*\):\([0-9]*\):[0-9]*/${USERNAME}:\1:\2:${GID}/" /etc/passwd
+if [ -n "${GID}" ] && [ "${GID}" != "$(id -g "${USER}")" ]; then
+  sed -i -e "s/^${USER}:\([^:]*\):[0-9]*/${USER}:\1:${GID}/" /etc/group
+  sed -i -e "s/^${USER}:\([^:]*\):\([0-9]*\):[0-9]*/${USER}:\1:\2:${GID}/" /etc/passwd
 fi
 
 ## 设置UID
 # shellcheck disable=SC2006
-if [ -n "${UID}" ] && [ "${UID}" != "$(id -u "${USERNAME}")" ]; then
-  sed -i -e "s/^${USERNAME}:\([^:]*\):[0-9]*:\([0-9]*\)/${USERNAME}:\1:${UID}:\2/" /etc/passwd
+if [ -n "${UID}" ] && [ "${UID}" != "$(id -u "${USER}")" ]; then
+  sed -i -e "s/^${USER}:\([^:]*\):[0-9]*:\([0-9]*\)/${USER}:\1:${UID}:\2/" /etc/passwd
 fi
 
 if [ $# -gt 0 ]; then

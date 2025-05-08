@@ -1,4 +1,4 @@
-FROM hub.uuuadc.top/library/alpine:3.20.1
+FROM alpine:3.20.1
 
 
 LABEL author="storezhang<华寅>" \
@@ -17,7 +17,7 @@ ENV LANGUAGE zh_CN.UTF-8
 
 # 设置运行用户及组
 ENV UMASK 022
-ENV USERNAME storezhang
+ENV USER storezhang
 ENV UID 1000
 ENV GID 1000
 
@@ -35,14 +35,14 @@ WORKDIR ${USER_HOME}
 COPY docker /
 
 
-ARG TARGETARCH
+ARG TARGETARCH=amd64
 RUN set -ex \
     \
     \
     \
     # 创建用户及用户组，后续所有操作都以该用户为执行者，修复在Docker中创建的文件不能被外界用户所操作
-    && addgroup -g ${GID} -S ${USERNAME} \
-    && adduser -u ${UID} -g ${GID} -S ${USERNAME} -h ${USER_HOME} \
+    && addgroup -g ${GID} -S ${USER} \
+    && adduser -u ${UID} -g ${GID} -S ${USER} -h ${USER_HOME} \
     \
     \
     \
