@@ -2,7 +2,7 @@ kind: secret
 name: password_ccr
 get:
   path: secrets
-  name: password_ccr
+  name: password_ccr_yaothink_zongliang
 ---
 
 kind: secret
@@ -54,16 +54,12 @@ steps:
         - arch: amd64
       registry:
         hostname: ccr.ccs.tencentyun.com
-        username: "160290688"
+        username: 100044063725
         password: $${PASSWORD_CCR}
 
   - name: 通知
     image: ccr.ccs.tencentyun.com/dronestock/feishu
     pull: always
-    when:
-      status:
-        - success
-        - failure
     settings:
       id:
         from_secret: id_feishu
