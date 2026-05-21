@@ -8,25 +8,17 @@ LABEL author="storezhang<华寅>" \
     description="Alpine镜像，增加时间配置以及守护进程"
 
 
-# 定义时区
-ENV TIMEZONE Asia/Chongqing
-
-# 增加中文支持，不然命令行执行程序会报错
-ENV LANG zh_CN.UTF-8
-ENV LANGUAGE zh_CN.UTF-8
-
-# 设置运行用户及组
-ENV UMASK 022
-ENV USER storezhang
-ENV UID 1000
-ENV GID 1000
-
-# 延迟启动
-ENV DELAY 1s
+ENV TIMEZONE=Asia/Chongqing \ # 定义时区
+    LANG=zh_CN.UTF-8 \ # 增加中文支持，不然命令行执行程序会报错
+    LANGUAGE=zh_CN:zh \
+    UMASK=022 \ # 设置运行用户及组
+    USER=storezhang \
+    UID=1000 \
+    GID=1000 \
+    DELAY=1s \ # # 延迟启动
+    USER_HOME=/config # 定义公共配置卷
 
 
-# 定义公共配置卷
-ENV USER_HOME /config
 VOLUME ${USER_HOME}
 WORKDIR ${USER_HOME}
 
